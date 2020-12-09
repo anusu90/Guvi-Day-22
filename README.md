@@ -1,3 +1,3 @@
 # GUVI
 
-![img](static/img/main.png)
+<!-- ![img](static/img/main.png) -->
