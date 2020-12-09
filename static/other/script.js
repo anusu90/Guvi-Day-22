@@ -107,3 +107,9 @@
 // let sum = mySum(array)
 // console.log(sum)
 
+myf = (a,b)=> {
+    return a+b
+}
+
+console.log(myf('hi', ' hello'))
+console.log(myf(2,4))

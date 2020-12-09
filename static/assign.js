@@ -52,5 +52,14 @@ function mySums(arr) {
     return sum;
 }
 // NOW WE WILL CALL INDIVIDUAL FUNCTIONS AND PRINT THEIR RESULT IN CONSOLE
-// let chunked = myChunk(array,2)
-// let red = myReducer(array,(a,c)=>a+c, 0)
+let chunked = myChunk(array,2)
+let red = myReducer(array,(a,c)=>a+c, 0)
+let filtered = myFilterer(array, v => v%2 ==0)
+let find = myFinder(array, v=> v == 3)
+let sum = mySums(array)
+
+console.log(chunked)
+console.log(red)
+console.log(filtered)
+console.log(find)
+console.log(sum)
