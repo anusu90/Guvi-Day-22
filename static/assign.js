@@ -1,4 +1,5 @@
-var array = [1, 2, 3, 4, 5, 6, 7];
+var array = [1, 2, 3, 4, 5, 6, 7]; //sample array
+//CREATING CHUNK FUNCTION
 function myChunk(array, k) {
     var n = array.length;
     var arr1 = [], arr2 = [];
@@ -7,7 +8,7 @@ function myChunk(array, k) {
     }
     return [arr1, arr2];
 }
-
+//CREATING REDUCER FUNCTION
 function myReducer(array, myFunction, acc) {
     var i = 0;
     if (acc === undefined) {
@@ -15,13 +16,11 @@ function myReducer(array, myFunction, acc) {
         i = 1;
     }
     for (i; i < array.length; i++) {
-        console.log(i);
-        console.log(acc);
         acc = myFunction(acc, array[i]);
     }
     return acc;
 }
-
+// CREATING FILTER FUNCTION
 function myFilterer(array, myFunction) {
     var acc = [];
     for (var i = 0; i < array.length; i++) {
@@ -31,7 +30,7 @@ function myFilterer(array, myFunction) {
     }
     return acc;
 }
-
+//CREATING FINDER FUNCTION
 function myFinder(obj, myFunc, index) {
     if (index === undefined) {
         index = 0;
@@ -43,7 +42,7 @@ function myFinder(obj, myFunc, index) {
         }
     }
 }
-
+//CREATING SUMMING FUNCTION
 function mySums(arr) {
     var sum = 0;
     for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
@@ -52,3 +51,6 @@ function mySums(arr) {
     }
     return sum;
 }
+// NOW WE WILL CALL INDIVIDUAL FUNCTIONS AND PRINT THEIR RESULT IN CONSOLE
+// let chunked = myChunk(array,2)
+// let red = myReducer(array,(a,c)=>a+c, 0)
