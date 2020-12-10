@@ -1,5 +1,5 @@
-function funcDef(a:any , b:any){
-    return a + b
+function funcDef<T>(a:T , b:T):T{
+    return add(a,b)
 }
 
 

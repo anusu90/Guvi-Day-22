@@ -2,8 +2,8 @@ let array = [1,2,3,4,5,6,7] //sample array
 
 
 // we will define type for the various types of function we are going to use
-type functionType1 = (obj:object) => boolean
-type functionType2 = (obj:number|string|object, arr_i:number|string|object) => number|string|object;
+type functionType1 = (obj:number|object) => boolean
+type functionType2 = (obj:number|string|object, arr_i:number|string|object|any) => number|string|object|any;
 
 //CREATING CHUNK FUNCTION
 
@@ -19,7 +19,7 @@ function myChunk (array:Array<Object>,k:Number){
 
 //CREATING REDUCER FUNCTION
 
-function myReducer(array:Array<Object>,myFunction:functionType2, acc:number | string | object){
+function myReducer(array:Array<object>|Array<number>,myFunction:functionType2, acc:number | string | object){
     let i = 0;
     if (acc === undefined){
         acc = array[0];
@@ -46,7 +46,7 @@ function myFilterer(array:Array<Object>,myFunction:functionType1){
 
 //CREATING FINDER FUNCTION
 
-function myFinder(obj:Array<object>, myFunc:functionType1, index:number){
+function myFinder(obj:Array<object>|Array<number>, myFunc:functionType1, index:number){
     if(index === undefined){
         index = 0;
     }
@@ -72,7 +72,53 @@ function mySums(arr:Array<number>){
     return sum
 }
 
-// NOW WE WILL CALL INDIVIDUAL FUNCTIONS AND PRINT THEIR RESULT IN CONSOLE
 
-// let chunked = myChunk(array,2)
-// let red = myReducer(array,(a,c)=>a+c, 0)
+document.querySelectorAll('.btn').forEach((btn)=>{
+    btn.addEventListener('click', (e) => {
+        // console.log((<HTMLInputElement>e.target).value);
+        giveOutput((<HTMLInputElement>e.target).value);
+    });
+})
+
+
+let displayHTML:(val:string) => void = function(val:string){
+    (<HTMLInputElement>document.getElementById("display-div")).innerHTML = `<p>The button pressed was ${val}. Check console for output</p>`
+}
+
+let giveOutput:(value:string)=>void = function (value:string){
+
+    console.log('The button pressed was',value)
+
+    switch (value) {
+        case 'chunk':
+            let ret = myChunk(array,3);
+            console.log(ret);
+            displayHTML(value);
+            break;
+            
+        case 'reduce':
+            let ret2 = myReducer(array,(a,c)=> a+c,0);
+            console.log(ret2);
+            displayHTML(value);
+            break;
+
+        case 'filter':
+            let ret3 = myFilterer(array,(v => v===5));
+            console.log(ret3);
+            displayHTML(value);
+            break;
+            
+        case 'finder':
+            let ret4 = myFinder(array,(v=>v===2),0);
+            console.log(ret4);
+            displayHTML(value);
+            break;
+  
+        case 'sum':
+            let ret5 = mySums(array);
+            console.log(ret5);
+            displayHTML(value);
+            break;
+    }
+
+}

@@ -51,15 +51,49 @@ function mySums(arr) {
     }
     return sum;
 }
-// NOW WE WILL CALL INDIVIDUAL FUNCTIONS AND PRINT THEIR RESULT IN CONSOLE
-let chunked = myChunk(array,2)
-let red = myReducer(array,(a,c)=>a+c, 0)
-let filtered = myFilterer(array, v => v%2 ==0)
-let find = myFinder(array, v=> v == 3)
-let sum = mySums(array)
-
-console.log(chunked)
-console.log(red)
-console.log(filtered)
-console.log(find)
-console.log(sum)
+document.querySelectorAll('.btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+        // console.log((<HTMLInputElement>e.target).value);
+        giveOutput(e.target.value);
+    });
+});
+var displayHTML = function (val) {
+    document.getElementById("display-div").innerHTML = "<p>The button pressed was " + val + ". Check console for output</p>";
+};
+var giveOutput = function (value) {
+    console.log('The button pressed was', value);
+    switch (value) {
+        case 'chunk':
+            var ret = myChunk(array, 3);
+            console.log(ret);
+            displayHTML(value);
+            break;
+        case 'reduce':
+            var ret2 = myReducer(array, function (a, c) { return a + c; }, 0);
+            console.log(ret2);
+            displayHTML(value);
+            break;
+        case 'filter':
+            var ret3 = myFilterer(array, (function (v) { return v === 5; }));
+            console.log(ret3);
+            displayHTML(value);
+            break;
+        case 'finder':
+            var ret4 = myFinder(array, (function (v) { return v === 2; }), 0);
+            console.log(ret4);
+            displayHTML(value);
+            break;
+        case 'sum':
+            var ret5 = mySums(array);
+            console.log(ret5);
+            displayHTML(value);
+            break;
+    }
+};
+// let key = 'a';
+// switch (key) {
+//     case 'a':
+//         console.log('a was pressed')
+//         break;
+//     case 'b':
+// }
